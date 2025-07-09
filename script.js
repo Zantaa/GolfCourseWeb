@@ -1,4 +1,5 @@
-document.querySelector("form").addEventListener("submit", async (e) => {
+/*
+ document.querySelector("form").addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const name = e.target.name.value;
@@ -27,4 +28,5 @@ document.querySelector("form").addEventListener("submit", async (e) => {
     console.error(err);
   }
 });
+*/
 

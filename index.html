@@ -64,7 +64,8 @@
 
     <section id="book">
       <h2>Book a Tee Time</h2>
-      <form>
+      <form name="booking" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="booking" />
         <label>Name:<input type="text" name="name" required /></label>
         <label>Email:<input type="email" name="email" required /></label>
         <label>Date:<input type="date" name="date" required /></label>
