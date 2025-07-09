@@ -14,8 +14,11 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
-header.hero {
-  background: url(https://uploads.mygolfspy.com/uploads/2024/09/pjkoenig2.png) no-repeat center center/cover;
+  header.hero {
+  background: url('images/pjkoenig2.png') no-repeat center center/cover;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
   height: 100vh;
   color: white;
   text-align: center;
