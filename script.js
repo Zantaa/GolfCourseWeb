@@ -1,6 +1,15 @@
 function generateTeeTimes(start = "07:00", end = "19:00", interval = 10) {
   const select = document.getElementById("time-select");
-  select.innerHTML = ""; // Clear existing
+  select.innerHTML = "";
+
+  const groups = {
+    Morning: document.createElement("optgroup"),
+    Afternoon: document.createElement("optgroup"),
+    Evening: document.createElement("optgroup")
+  };
+  groups.Morning.label = "🌅 Morning (7 AM – 11:59 AM)";
+  groups.Afternoon.label = "☀️ Afternoon (12 PM – 4:59 PM)";
+  groups.Evening.label = "🌇 Evening (5 PM – 7 PM)";
 
   const [startHour, startMin] = start.split(":").map(Number);
   const [endHour, endMin] = end.split(":").map(Number);
@@ -14,9 +23,9 @@ function generateTeeTimes(start = "07:00", end = "19:00", interval = 10) {
   while (current <= endTime) {
     const hours = current.getHours();
     const minutes = current.getMinutes();
-    const value = current.toTimeString().slice(0, 5); // "HH:MM" for submission
+    const value = current.toTimeString().slice(0, 5); // "HH:MM"
 
-    // Format for display: "h:mm AM/PM"
+    // Format as 12-hour with AM/PM
     const ampmHours = hours % 12 || 12;
     const ampm = hours < 12 ? "AM" : "PM";
     const display = `${ampmHours}:${minutes.toString().padStart(2, "0")} ${ampm}`;
@@ -24,11 +33,24 @@ function generateTeeTimes(start = "07:00", end = "19:00", interval = 10) {
     const option = document.createElement("option");
     option.value = value;
     option.textContent = display;
-    select.appendChild(option);
+
+    if (hours < 12) {
+      groups.Morning.appendChild(option);
+    } else if (hours < 17) {
+      groups.Afternoon.appendChild(option);
+    } else {
+      groups.Evening.appendChild(option);
+    }
 
     current.setMinutes(current.getMinutes() + interval);
   }
+
+  // Append groups to the select
+  select.appendChild(groups.Morning);
+  select.appendChild(groups.Afternoon);
+  select.appendChild(groups.Evening);
 }
+
 
 generateTeeTimes();
 
