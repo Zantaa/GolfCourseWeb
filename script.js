@@ -1,3 +1,19 @@
+const datePicker = document.getElementById("date-picker");
+
+function setDateLimits() {
+  const today = new Date();
+  const oneWeekFromNow = new Date();
+  oneWeekFromNow.setDate(today.getDate() + 7);
+
+  const toISO = (date) => date.toISOString().split("T")[0];
+
+  datePicker.min = toISO(today);
+  datePicker.max = toISO(oneWeekFromNow);
+}
+
+// Run this when the page loads
+setDateLimits();
+
 function generateTeeTimes(start = "07:00", end = "19:00", interval = 10) {
   const select = document.getElementById("time-select");
   select.innerHTML = "";
