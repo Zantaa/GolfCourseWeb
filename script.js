@@ -12,14 +12,24 @@ function generateTeeTimes(start = "07:00", end = "19:00", interval = 10) {
   endTime.setHours(endHour, endMin, 0);
 
   while (current <= endTime) {
-    const timeStr = current.toTimeString().slice(0, 5);
+    const hours = current.getHours();
+    const minutes = current.getMinutes();
+    const value = current.toTimeString().slice(0, 5); // "HH:MM" for submission
+
+    // Format for display: "h:mm AM/PM"
+    const ampmHours = hours % 12 || 12;
+    const ampm = hours < 12 ? "AM" : "PM";
+    const display = `${ampmHours}:${minutes.toString().padStart(2, "0")} ${ampm}`;
+
     const option = document.createElement("option");
-    option.value = timeStr;
-    option.textContent = timeStr;
+    option.value = value;
+    option.textContent = display;
     select.appendChild(option);
+
     current.setMinutes(current.getMinutes() + interval);
   }
 }
+
 generateTeeTimes();
 
 const dateInput = document.querySelector('input[name="date"]');
