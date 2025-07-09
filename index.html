@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Green Valley Golf Club</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="hero">
+      <nav>
+        <h1>Green Valley Golf Club</h1>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#course">Course</a></li>
+          <li><a href="#book">Book Tee Time</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="hero-content">
+        <h2>Experience the Best Golfing in the Valley</h2>
+        <a href="#book" class="cta-button">Book Now</a>
+      </div>
+    </header>
+
+    <section id="about">
+      <h2>About Us</h2>
+      <p>
+        Green Valley is a premier 18-hole championship course nestled in scenic
+        hills. Open to the public year-round.
+      </p>
+    </section>
+
+    <section id="course">
+      <h2>Course Details</h2>
+      <ul>
+        <li>Par 72</li>
+        <li>Driving Range & Putting Green</li>
+        <li>Clubhouse with Pro Shop</li>
+        <li>Golf Cart Rentals</li>
+      </ul>
+    </section>
+    <section id="gallery">
+      <h2>Gallery</h2>
+      <div class="gallery-grid">
+        <a href="images/hole1.jpg" data-lightbox="golf-course"
+          ><img src="images/thumbs/hole1.jpg" alt="Hole 1"
+        /></a>
+        <a href="images/hole2.jpg" data-lightbox="golf-course"
+          ><img src="images/thumbs/hole2.jpg" alt="Hole 2"
+        /></a>
+        <a href="images/hole3.jpg" data-lightbox="golf-course"
+          ><img src="images/thumbs/hole3.jpg" alt="Hole 3"
+        /></a>
+        <a href="images/hole4.jpg" data-lightbox="golf-course"
+          ><img src="images/thumbs/hole4.jpg" alt="Hole 4"
+        /></a>
+      </div>
+    </section>
+
+    <section id="book">
+      <h2>Book a Tee Time</h2>
+      <form>
+        <label>Name:<input type="text" name="name" required /></label>
+        <label>Email:<input type="email" name="email" required /></label>
+        <label>Date:<input type="date" name="date" required /></label>
+        <label>Time:<input type="time" name="time" required /></label>
+        <button type="submit">Reserve</button>
+      </form>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>123 Fairway Drive, Green Valley, CA</p>
+      <p>Email: info@greenvalleygolf.com</p>
+      <p>Phone: (555) 123-4567</p>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Green Valley Golf Club</p>
+      <button id="toggle-theme">Toggle Dark Mode</button>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+  </body>
+</html>
