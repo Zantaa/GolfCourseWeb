@@ -52,3 +52,41 @@ async function updateBookedTimes(date) {
     console.error("Failed to load booked times:", err);
   }
 }
+document.getElementById("booking-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const form = e.target;
+  const name = form.name.value;
+  const email = form.email.value;
+  const date = form.date.value;
+  const time = form.time.value;
+
+  try {
+    const res = await fetch("/.netlify/functions/bookings", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, date, time })
+    });
+
+    const result = await res.json();
+
+    if (!res.ok) {
+      if (res.status === 409) {
+        alert("That tee time is already booked. Please choose another.");
+      } else {
+        alert("Booking failed. Please try again later.");
+        console.error(result.error);
+      }
+      return;
+    }
+
+    alert(`Booking confirmed! Confirmation #: ${result.confirmationId}`);
+    form.reset();
+    generateTeeTimes(); // Refresh options
+    updateBookedTimes(date); // Re-disable any booked times
+  } catch (err) {
+    alert("Something went wrong. Try again later.");
+    console.error(err);
+  }
+});
+

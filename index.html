@@ -64,25 +64,12 @@
 
     <section id="book">
       <h2>Book a Tee Time</h2>
-      <form
-        name="booking"
-        method="POST"
-        netlify
-        netlify-honeypot="bot-field"
-        action="/thank-you.html"
-      >
-        <input type="hidden" name="form-name" value="booking" />
-        <p hidden>
-          <label
-            >Don’t fill this out if you're human: <input name="bot-field"
-          /></label>
-        </p>
-
+      <form id="booking-form">
         <label>Name:<input type="text" name="name" required /></label>
         <label>Email:<input type="email" name="email" required /></label>
         <label>Date:<input type="date" name="date" required /></label>
-        <label for="time"
-          >Time:
+        <label for="time">
+          Time:
           <select name="time" id="time-select" required></select>
         </label>
         <button type="submit">Reserve</button>
