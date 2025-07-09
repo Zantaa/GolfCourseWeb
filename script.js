@@ -21,3 +21,34 @@ function generateTeeTimes(start = "07:00", end = "19:00", interval = 10) {
   }
 }
 generateTeeTimes();
+
+const dateInput = document.querySelector('input[name="date"]');
+const timeSelect = document.getElementById("time-select");
+
+dateInput.addEventListener("change", async (e) => {
+  const selectedDate = e.target.value;
+  if (!selectedDate) return;
+
+  await updateBookedTimes(selectedDate);
+});
+
+async function updateBookedTimes(date) {
+  try {
+    const res = await fetch(`/.netlify/functions/bookings?date=${date}`);
+    const data = await res.json();
+    const bookedTimes = data.bookedTimes || [];
+
+    // Regenerate tee times so we reset state
+    generateTeeTimes();
+
+    // Disable booked time options
+    Array.from(timeSelect.options).forEach((option) => {
+      if (bookedTimes.includes(option.value)) {
+        option.disabled = true;
+        option.textContent += " (Booked)";
+      }
+    });
+  } catch (err) {
+    console.error("Failed to load booked times:", err);
+  }
+}
